@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 20px;
+            background-color: silver;
+            float: left;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="txt"></div>
+    <button id="btn1">Clickme</button>
+    <button id="btn2">Clickme</button>
+    <div class="bgc"></div>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#btn1').click(function() {
+            $('.txt').show(200);
+        });
+
+        $('#btn2').click(function() {
+            $('div').text('我是内容');
+        });
+
+        $('.bgc').width(100).height(100).css('backgroundColor', 'red').text('皮肤较黑')
+    });
+</script>

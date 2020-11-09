@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="获取" id="getBtn">
+    <input type="button" value="设置" id="setBtn">
+
+    <div id="div1">我是一个div标签
+        <p>我是一个P1标签 <span>span1</span></p>
+    </div>
+
+    <div id="div2">我是二个div标签
+        <p>我是一个P2标签 <span>span2</span></p>
+    </div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // 1. text() 获取和设置文本
+        // 1.1 获取文本 text()方法不给参数
+        // $('#getBtn').click(function() {
+        // 1.1 获取id为div1这个标签的文本
+        // console.log($('#div1').text())
+        // })
+        // 1.2 获取标签为div的元素的文本
+        // 包含了多个dom元素的jquery对象, 通过text()访求获取文本, 会把所有的dom元素的文本的到
+        $('#getBtn').click(function() {
+            console.log($('div').text());
+            console.log($('div').css('width')); // 1904px
+        })
+
+
+        // 2. 设置文本: text()
+        $('#setBtn').click(function() {
+            // 2.1 给id为div1的这个标签设置文本
+            $('#div1').text('我是新设置的文本')
+            $('#div1').text('我是新设置的文本<a>我是新的连接</a>')
+
+            // 2.2 给标签为div的元素设置文本
+            $('div').text('设置的文本')
+        })
+
+    })
+</script>

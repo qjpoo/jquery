@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        body {
+            background: #000;
+        }
+        
+        .wrap {
+            margin: 100px auto 0;
+            width: 630px;
+            height: 394px;
+            padding: 10px 0 0 10px;
+            background: #000;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+        
+        .wrap li {
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+        
+        .wrap img {
+            display: block;
+            border: 0;
+            width: 200px;
+            height: 185px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <a href="#"><img src="imgs/03.jpg"" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="imgs/03.jpg"" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="imgs/03.jpg"" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="imgs/03.jpg"" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="imgs/03.jpg"" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="imgs/03.jpg"" /></a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // console.log($('.wrap>ul>li'));
+    // console.log($('.wrap>ul').children(0).css('opacity', 1))
+    // console.log($('.wrap li'));
+    $('.wrap').find('li').mouseenter(function() { // console.log($(this).css('opacity', 1));
+        // console.log($(this).css('opacity', 1).siblings('li'));
+        $(this).css('opacity', 1).siblings('li').css('opacity', 0.6)
+    })
+    $('.wrap').mouseleave(function() { // console.log($(this).css('opacity', 1));
+        // console.log($(this).css('opacity', 1).siblings('li'));
+        // $(this).find('li').css('opacity', 1)
+        $(this).find('li').css('opacity', 1)
+    })
+</script>

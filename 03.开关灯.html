@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        img {
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <button>开灯</button>
+    <button>关灯</button><br>
+    <img src="imgs/03.jpg" alt="">
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // 需求: 给按钮添加事件, 设置Body的背景色
+
+        // 1. 获取按钮
+        var btns = document.getElementsByTagName('button')
+            // console.log(btns);
+
+        // 2. 设置点击事件, 关灯
+        btns[1].onclick = function() {
+            $('body').css('backgroundColor', 'black');
+        }
+
+        // 3. 开灯
+        $(btns[0]).click(function() {
+            $('body')[0].style.backgroundColor = 'white'
+        })
+
+    })
+</script>

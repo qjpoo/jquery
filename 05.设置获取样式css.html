@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            height: 200px;
+            background-color: green;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="获取" id="getBtn">
+    <input type="button" value="设置" id="setBtn">
+    <div id="div1" style="width:200px">1</div>
+    <div id="div2" style="width:300px">2</div>
+    <div id="div3" style="width:400px">3</div>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // css()方法
+        // 获取css样式的值
+        $('#getBtn').click(function() {
+            console.log($('#div1').css('width')) // 200px
+            console.log($('#div2').css('width')) // 300px
+            console.log($('#div3').css('width')) // 400px
+            console.log($('#div1').css('backgroundColor')); // rgb(0, 128, 0)
+            console.log($('#div1').css('background-color')); // rgb(0, 128, 0)
+            console.log($('#div1').css('border')); // rgb(0, 128, 0)
+            // ie, 要指定具体的边框
+            console.log($('#div1').css('border-left-width'));
+
+            console.log($('div').css('width')); // 只会输出第一个div  200px
+        })
+
+        // 2. 设置样式
+        // 设置的样式是行内样式
+        // 设置单样式
+        $('#setBtn').click(function() {
+            // $('#div1').css('width', '300px');
+            // $('#div1').css('height', 300);
+            // $('#div1').css('backgroundColor', 'gray');
+            // $('#div1').css('background-color', 'yellow');
+            // $('#div1').css('border', '10px solid black');
+
+
+            // 设置多个样式
+            $('#div1').css({
+                'width': '200px',
+                height: 500,
+                backgroundColor: 'yellow',
+                'backgroundColor': 'pink',
+                'background-color': 'silver',
+                'border': '5px solid green',
+                'border-right-width': '25px'
+            });
+
+        })
+    })
+</script>

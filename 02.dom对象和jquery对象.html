@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: silver;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one">123</div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // 入口函数
+    $(function() {
+        // 1. dom对象
+        // 原生的js选择器获取到对象
+        // 特点: 只能调用dom方法或者属性, 不能调用jquery的属性和方法
+        // document.getElementById('')
+        // document.getElementsByTagName('')
+        var div1 = document.getElementById('one')
+        div1.style.backgroundColor = 'red'
+            // div1.css('backgroundColor', 'green') // 02.dom对象和jquery对象.html:65 Uncaught TypeError: div1.css is not a function
+
+        // 2. jquery对象
+        // 利用jquery选择器取到的对象
+        // 特点: 只能调用jquery的方法或者属性, 不能调用原生的dom对象的属性或者方法
+        var $div1 = $('#one') // jquery里面的变量建议用$开头
+        $div1.css('backgroundColor', 'green') // jquery对象是可以调用jquery的方法的
+            // $div1.style.backgroundColor = 'red'  // 会报错
+
+        // 3. jquery对象长什么样
+        // jquery对象是一个伪数组, jquery对象其实就是dom对象的一个包装集
+        var div1 = document.getElementById('one')
+        console.log(div1);
+
+        var $div1 = $('#one')
+        console.log($div1);
+        console.log($div1.__proto__ === Array.prototype) // false, jquery对象是一个伪数组
+
+        var $divs = $('div')
+        console.log($divs);
+
+        // 4. dom对象转换成jquery对象
+        var div1 = document.getElementById('one')
+        var $div1 = $(div1)
+        console.log($div1);
+
+        // 5. jquery对象转换成dom对象
+        // 5.1 使用下标来取出来
+        var $divs = $('div')
+        console.log($divs);
+        var div1 = $divs[0]
+        console.log(div1);
+
+        // 5.2 使用jquery的方法 get()
+        var div2 = $divs.get(1)
+        console.log(div2);
+    })
+</script>

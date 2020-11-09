@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+        }
+        
+        .bgc {
+            background-color: green;
+        }
+        
+        .fontSize30 {
+            font-size: 30px;
+        }
+        
+        .width200 {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="添加类" id="addClass" />
+    <input type="button" value="移除类" id="removeClass" />
+    <input type="button" value="判断类" id="hasClass" />
+    <input type="button" value="切换类" id="toggleClass" />
+    <div id="div1" class="bgc">hello world</div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // // 添加单个类
+        // $('#addClass').click(function() {
+        //         $('#div1').addClass("fontSize30")
+        //     })
+        // 添加多个类
+        $('#addClass').click(function() {
+                $('#div1').addClass("fontSize30 width200")
+            })
+            // 移除类
+        $('#removeClass').click(function() {
+                $('#div1').removeClass("fontSize30")
+            })
+            // 删除类
+            // $('#addClass').click(function() {
+            //     $('#div1').removeClass("")
+            // })
+    })
+</script>
