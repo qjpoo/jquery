@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 400px;
+            background-color: gray;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="开始动画" id="start">
+    <input type="button" value="停止动画" id="stop">
+    <div></div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // 开始动画, 模拟一个动画队列
+    $(function() {
+        $('#start').click(function() {
+            $('div').slideDown(2000).slideUp(2000)
+        })
+    })
+
+    // 停止动画, 执行stop方法
+    // 第一个参数:  是否清除队列
+    // 第二个参数:  是否跳转到最终的效果
+    $('#stop').click(function() {
+        // $('div').stop() // 不写参数, 默认就是两个false
+        // $('div').stop(true, true)
+        $('div').stop(true, false)
+            // $('div').stop(false, false)
+            // $('div').stop(false, true)
+    })
+</script>

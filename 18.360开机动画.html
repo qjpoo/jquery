@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .box {
+            width: 320px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            box-shadow: 1px 1px 10px #2d2d2d;
+        }
+        
+        #close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            background-color: red;
+            color: pink;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        #close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .hd {
+            width: 320px;
+            height: 300px;
+            background-color: #03c03c;
+            color: #fff;
+            font-size: 70px;
+            line-height: 300px;
+            text-align: center;
+        }
+        
+        .bd {
+            width: 320px;
+            height: 100px;
+            background-color: #fffc00;
+            font-size: 30px;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <span id="close">X</span>
+        <div class="hd" id="t">1分12秒</div>
+        <div class="bd" id="b">天气：晴天</div>
+    </div>
+</body>
+
+</html>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        $('#close').click(function() {
+            // 让id="b"的高度为0
+            $('#b').animate({
+                height: 0
+            }, 500, function() {
+                $('#close').animate({
+                    width: 0
+                }, 100, function() {
+                    // 让id="box"的宽度为0
+                    $('#box').animate({
+                        width: 0
+                    }, 1000)
+
+
+                })
+            })
+        })
+    })
+</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="append" id="btnAppend">
+    <input type="button" value="prepend" id="btnPrepend">
+    <input type="button" value="after" id="btnAfter">
+    <input type="button" value="before" id="btnBefore">
+    <input type="button" value="appendTo" id="btnAppendTo">
+    <ul id="ul1">
+        <li>我是第1个li标签1</li>
+        <li>我是第2个li标签1</li>
+        <li id="li13">我是第3个li标签1</li>
+        <li>我是第4个li标签1</li>
+        <li>我是第5个li标签1</li>
+    </ul>
+
+    <ul id="ul2">
+        <li>我是第1个li标签2</li>
+        <li>我是第2个li标签2</li>
+        <li id="li23">我是第3个li标签2</li>
+        <li>我是第4个li标签2</li>
+        <li>我是第5个li标签2</li>
+    </ul>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        $('#btnAppend').click(function() {
+            var $liNew = $('<li>我是新来的</li>')
+                // append()   父元素.append(子元素) 作为最后一个子元素添加
+                // $('#ul1').append($liNew) // 添加到ul1的最后面
+                // $('#ul1').append($('#li13'))  // 相当于把id=li13的li剪切到ul1的后面了
+            $('#ul1').append($('#li23'))
+        })
+
+        // prepend
+        $('#btnPrepend').click(function() {
+            // $('#ul1').prepend($('<li>我是新来的</li>'))
+            // $('#ul1').prepend($('#li13'))
+            $('#ul1').prepend($('#li23'))
+        })
+
+        // before   // 在ul元素的前面, 和ul是兄弟关系
+        $('#btnBefore').click(function() {
+            // $('#ul1').before($('<li>我是新来的</li>'))
+            // $('#ul1').before($('#li13'))
+            $('#ul1').before($('#li23'))
+        })
+
+        // after
+        $('#btnAfter').click(function() {
+            // $('#ul1').after($('<li>我是新来的</li>'))
+            // $('#ul1').after($('#li13'))
+            $('#ul1').after($('#li23'))
+        })
+
+        // appendTo    子元素.appendTo(父元素)
+        $('#btnAppendTo').click(function() {
+            $('#li23').appendTo($('#ul1'))
+        })
+    })
+</script>

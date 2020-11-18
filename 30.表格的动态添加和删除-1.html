@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery动态添加和删除数据</title>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- <script src="jquery-1.12.4.js"></script> -->
+    <!-- <script src="js/index.js"></script> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .wrap {
+            width: 410px;
+            margin: 30px auto 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 100%;
+        }
+        
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+        
+        th {
+            background-color: #09c;
+            font: bold 16px "Microsoft YaHei";
+            color: #fff;
+        }
+        
+        td {
+            font: 14px "Microsoft YaHei";
+            text-align: center;
+        }
+        
+        td a.del {
+            text-decoration: none;
+        }
+        
+        a.del:hover {
+            text-decoration: underline;
+        }
+        
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+        
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+        
+        .btnAdd {
+            width: 110px;
+            height: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .form-item {
+            height: 100%;
+            position: relative;
+            padding-left: 100px;
+            padding-right: 20px;
+            margin-bottom: 34px;
+            line-height: 36px;
+        }
+        
+        .form-item>.lb {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100px;
+            text-align: right;
+        }
+        
+        .form-item>.txt {
+            width: 300px;
+            height: 32px;
+        }
+        
+        .mask {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.15;
+            display: none;
+        }
+        
+        .form-add {
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            margin-left: -197px;
+            padding-bottom: 20px;
+            background: #fff;
+            display: none;
+        }
+        
+        .form-add-title {
+            background-color: #f7f7f7;
+            border-width: 1px 1px 0 1px;
+            border-bottom: 0;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .form-add-title span {
+            width: auto;
+            height: 18px;
+            font-size: 16px;
+            font-family: "Microsoft YaHei";
+            font-weight: bold;
+            color: rgb(102, 102, 102);
+            text-indent: 12px;
+            padding: 8px 0px 10px;
+            margin-right: 10px;
+            display: block;
+            overflow: hidden;
+            text-align: left;
+        }
+        
+        .form-add-title div {
+            width: 16px;
+            height: 20px;
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            font-size: 30px;
+            line-height: 16px;
+            cursor: pointer;
+        }
+        
+        .form-submit {
+            text-align: center;
+        }
+        
+        .form-submit input {
+            width: 170px;
+            height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- 添加按钮 -->
+        <div>
+            <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd">
+        </div>
+        <!-- 表格数据 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>课程名称</th>
+                    <th>所属学院</th>
+                    <th>已学会</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td>JavaScript</td>
+                    <td>信息工程系</td>
+                    <td><a href="javascrip:;" class="del">删除</a></td>
+                </tr>
+                <tr>
+                    <td>css</td>
+                    <td>信息工程系</td>
+                    <td><a href="javascrip:;" class="del">删除</a></td>
+                </tr>
+                <tr>
+                    <td>html</td>
+                    <td>信息工程系</td>
+                    <td><a href="javascrip:;" class="del">删除</a></td>
+                </tr>
+                <tr>
+                    <td>jQuery</td>
+                    <td>信息工程系</td>
+                    <td><a href="javascrip:;" class="del">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 遮罩层 -->
+    <div id="j_mask" class="mask"></div>
+    <!-- 添加数据内容的form -->
+    <div id="j_formAdd" class="form-add">
+        <div class="form-add-title">
+            <span>添加数据</span>
+            <div id="j_hideFormAdd">x</div>
+        </div>
+        <div class="form-item">
+            <label class="lb" for="j_txtLesson">课程名称：</label>
+            <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称">
+        </div>
+        <div class="form-item">
+            <label class="lb" for="j_txtBelSch">所属学院：</label>
+            <!-- <input class="txt" type="text" id="j_txtBelSch" value="信息工程系" readonly> -->
+            <input class="txt" type="text" id="j_txtBelSch" value="前端jquery">
+        </div>
+        <div class="form-submit">
+            <input type="button" value="添加" id="j_btnAdd">
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // 1. 点击添加数据, 显示添加面板遮罩层
+        $('#j_btnAddData').click(function() {
+            $('#j_mask').show()
+            $('#j_formAdd').show()
+        })
+
+        // 2. 点击添加面板里面的关闭按钮, 隐藏添加面板和遮罩层
+        $('#j_hideFormAdd').click(function() {
+            $('#j_formAdd').hide()
+            $('#j_mask').hide()
+        })
+
+        // 3. 点击添加面板里面的添加按钮, 会把输入的内容生成一个tr, 这个tr添加到tbody中
+        $('#j_btnAdd').click(function() {
+            // 获取用户输入的信息, 添加一个tr
+            // console.log($('#j_txtLesson').val());
+            // console.log($('#j_txtBelSch').val());
+            var $tr = $('<tr><td>' + $('#j_txtLesson').val() + '</td><td>' + $('#j_txtBelSch').val() + '</td><td><a href="javascrip:;" class="del">删除</a></td></tr>')
+                // 创建一个事件
+                //$tr.find('.del').click(function() {
+                //    // $(this).parent().parent().remove()
+                //    $tr.remove()
+                //})
+
+            $('#j_tb').append($tr)
+            $('#j_formAdd').hide()
+            $('#j_mask').hide()
+
+
+        })
+
+        // 4. 点击delete这些a标签, 删除对应的tr
+        // console.log($('#j_tb .del'));
+        // $('#j_tb .del').click(function() {
+        // alert('11')
+        // $(this).parent().parent().remove()
+        // })
+
+        // 这里可以使用委托注册的方式来添加和删除方法
+        // 支持动态注册
+        $('#j_tb').on('click', '.del', function() { //它们共同的父亲是j_tb
+            // console.log(this); // 这里的this是a, 不是j_tb, jquery把this修改了
+            $(this).parent().parent().remove()
+        })
+    })
+</script>

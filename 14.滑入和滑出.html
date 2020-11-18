@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="滑入" id="slideDown">
+    <input type="button" value="滑出" id="slideUp">
+    <input type="button" value="切换" id="switch">
+    <div id="div1"></div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // 滑出
+        // 1. slideDown(参数1, 参数2)  
+        // 参数1: 执行时长
+        // 参数2: 回调函数
+        $('#slideDown').click(function() {
+            $('#div1').slideDown(2000, function() {
+                alert('slide down over ...')
+            })
+
+        })
+
+        // 滑入
+        $('#slideUp').click(function() {
+            $('#div1').slideUp(3000, function() {
+                alert('slide up over ...')
+            })
+        })
+
+        // 切换
+        $('#switch').click(function() {
+            $('#div1').slideToggle(3000, function() {
+                alert('toggle end ...')
+            })
+        })
+
+    })
+</script>

@@ -39,13 +39,13 @@
 <script>
     $(function() {
         // // 添加单个类
-        // $('#addClass').click(function() {
-        //         $('#div1').addClass("fontSize30")
-        //     })
-        // 添加多个类
         $('#addClass').click(function() {
-                $('#div1').addClass("fontSize30 width200")
+                $('#div1').addClass("fontSize30")
             })
+            // 添加多个类
+            // $('#addClass').click(function() {
+            //         $('#div1').addClass("fontSize30 width200")
+            //     })
             // 移除类
         $('#removeClass').click(function() {
                 $('#div1').removeClass("fontSize30")
@@ -54,5 +54,17 @@
             // $('#addClass').click(function() {
             //     $('#div1').removeClass("")
             // })
+
+        //判断类
+        // 判断元素是否有没有某个类, 如果有就返回true
+        $('#hasClass').click(function() {
+            console.log($('#div1').hasClass('fontSize30'))
+        })
+
+        // 切换类
+        // 如果元素有某个类就移除这个类, 如果元素没有这个类就添加这个类
+        $('#toggleClass').click(function() {
+            $('#div1').toggleClass('fontSize30')
+        })
     })
 </script>

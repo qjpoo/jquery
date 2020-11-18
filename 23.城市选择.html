@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select {
+            /* float: left; */
+            width: 200px;
+            background-color: teal;
+            height: 200px;
+            font-size: 20px;
+        }
+        
+        .btn-box {
+            /* margin: 2px 10px; */
+            width: 30px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 10px;
+        }
+        /* #tar-city {
+            margin-left: 60px;
+            margin-top: -100px;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1>城市选择:</h1>
+    <select name="src-city" id="src-city" multiple>
+    <option value="1">北京</option>
+    <option value="2">上海</option>
+    <option value="3">广州</option>
+    <option value="4">深圳</option>
+    <option value="5">武汉</option>
+</select>
+    <div class="btn-box">
+        <button id="btn-sel-all">&gt;&gt;</button>
+        <button id="btn-sel-none">&lt;&lt;</button>
+        <button id="btn-sel">&gt;</button>
+        <button id="btn-back">&lt;</button>
+    </div>
+    <select name="tar-city" id="tar-city" multiple>
+
+</select>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // 全部添加到右侧 >>
+        $('#btn-sel-all').click(function() {
+                $('#src-city>option').appendTo($('#tar-city'))
+            })
+            // <<
+        $('#btn-sel-none').click(function() {
+            $('#tar-city>option').appendTo($('#src-city'))
+        })
+
+        // 选中的到右边 >
+        $('#btn-sel').click(function() {
+            // 把左边select下拉菜单, 被选中的option项移到右边去, 要用到过滤器 :
+            // console.log($('#src-city>option:selected'))
+            $('#src-city>option:selected').appendTo($('#tar-city'))
+        })
+
+        // <
+        $('#btn-back').click(function() {
+            // 把左边select下拉菜单, 被选中的option项移到右边去
+            // console.log($('#src-city>option:selected'))
+            $('#tar-city>option:selected').appendTo($('#src-city'))
+        })
+    })
+</script>

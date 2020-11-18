@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="Click" id="btn">
+    <ul id="ul1">
+        <li>我是第1个li标签</li>
+        <li>我是第2个li标签</li>
+        <li id="li3">我是第3个li标签</li>
+        <li>我是第4个li标签</li>
+        <li>我是第5个li标签</li>
+    </ul>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        $('#btn').click(function() {
+            // 1. 清空Li
+            // $('#ul1').html("") // 只是清空了li的内容, li标签还在
+            // $('#ul1').empty() // 移除了li, 但是ul还在
+
+
+            // 移除某个元素(li)
+            // $('#li3').remove()
+
+
+            // 移队ul, 但是只能获取li3这个标签
+            $('#li3').parent().remove() // ul都没有了
+        })
+    })
+</script>

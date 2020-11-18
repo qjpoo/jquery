@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin-top: 50px;
+            width: 300px;
+            height: 400px;
+            background-color: gray;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="显示" id="show">
+    <input type="button" value="隐藏" id="hide">
+    <input type="button" value="切换" id="toggle">
+    <div id="div1"></div>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // 显示
+        $('#show').click(function() {
+            // show() 第一个参数为时长, 单位毫秒, 2000 代表2s, 还可以是字符串
+            // fast ==> 200ms  normal ==>  400ms   slow ==> 600ms
+            // $('#div1').show(2000)
+            // $('#div1').show('slow') // slow写错了, 代表 normal
+
+            // show()第二个参数为回调函数
+            $('#div1').show(2000, function() {
+                // alert('动画执行完成了...')
+                $('#div1').css('backgroundColor', 'green')
+            })
+        })
+
+        // 隐藏
+        $('#hide').click(function() {
+            $('#div1').hide(2000, function() {
+                alert('hidden over ...')
+            })
+        })
+
+        // 切换toggle
+        // 元素是隐藏==> 显示 ,  显示 ==> 隐藏
+        $('#toggle').click(function() {
+            $('#div1').toggle(2000)
+        })
+
+    })
+</script>

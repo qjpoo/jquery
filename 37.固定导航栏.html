@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .bd {
+            width: 1251px;
+            margin: auto;
+        }
+        
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        
+        .main {
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bd">
+        <div class="top">
+            <img src="imgs/top.png" alt="">
+        </div>
+
+        <div class="nav">
+            <img src="imgs/middle.png" alt="">
+        </div>
+
+        <div class="main">
+            <img src="imgs/floor.png" alt="">
+            <img src="imgs/floor.png" alt="">
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // 给页面设置一个滚动的事件,时刻监视面的的scrollTop值
+        // 如果这个值大于第一部分的高度, 就是设置第二部分为固定定位
+
+        // 如果这个值小于第一部分的高度, 就设置第二部分的定位还原
+
+        // top的高度
+        var $topHeight = $('.top').height()
+            // .nav的高度
+        var $navHeight = $('.nav').height()
+        console.log($topHeight, $navHeight);
+
+
+        $(window).scroll(function() {
+            // console.log('11');
+            // 获取卷曲出去的距离
+            var $scrollTopValue = $(this).scrollTop()
+                // console.log($scrollTopValue);
+
+            // 判断scrollTopvalue的值是否大于 .top的高度的值
+            if ($scrollTopValue >= $topHeight) {
+                $('.nav').css({
+                    position: 'fixed',
+                    top: 0,
+                })
+
+                // 设置.main的margin-top的值为.nav的的高度
+                $('.main').css({
+                    marginTop: $navHeight
+                })
+            } else {
+                $('.nav').css({
+                        position: 'static'
+                    })
+                    // 设置.main的margin-top的值为原来的值
+                $('.main').css({
+                    marginTop: 10
+                })
+
+            }
+        })
+
+    })
+</script>

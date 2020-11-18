@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .one {
+            width: 200px;
+            border: 10px solid green;
+            padding: 20px;
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="按钮" id="btn">
+    <div class="one" id="one" style="height: 200px;"></div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        $('#btn').click(function() {
+            // css有单位
+            console.log($('#one').css('width')); // 200px
+            console.log($('#one').css('height'));
+
+            // width height不包括内边距, 边框和外边距
+            console.log($('#one').width()); // 200
+            console.log($('#one').height()); // 200
+
+            // 包括内边距
+            console.log($('#one').innerWidth()); // 240
+            console.log($('#one').innerHeight()); // 240
+
+            // 包括内边距 和 边框
+            console.log($('#one').outerWidth()); // 260
+            console.log($('#one').outerWidth()); // 260
+
+            // 包括内边距, 边框和外边距
+            console.log($('#one').outerWidth(true)); // 320
+            console.log($('#one').outerHeight(true)); // 320
+
+            // 网页的可视区宽高
+            console.log($(window).width());
+            console.log($(window).height());
+        })
+    })
+</script>

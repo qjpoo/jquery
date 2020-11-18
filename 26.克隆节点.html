@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            border: 1px solid goldenrod;
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="clone" id="clone">
+    <div id="div1">
+        <p><span>xxoo</span></p>
+    </div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // jquery中克隆节点: clone()
+    // 只存在内存中, 如果要在页面上显示, 就应该追加到页面上
+    // clone()方法参数不管是true还是false, 都会克隆到后代的节点中
+    // true 表示会把事伯一起克隆到, 参数如果是false不会克隆事件, 默认不写是false
+    $(function() {
+        $('#div1').click(function() {
+            alert('1111')
+        })
+        $('#clone').click(function() {
+            var $cloneDiv = $('#div1').clone(true)
+                // console.log($cloneDiv);
+                // 修改克隆的节点的Id
+            $cloneDiv.attr('id', 'div2')
+
+            $('body').append($cloneDiv)
+        })
+    })
+</script>

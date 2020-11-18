@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 400px;
+            background-color: pink;
+            border: 1px solid black;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="html()" id="btnHtml">
+    <input type="button" value="$()" id="btn1">
+    <div id="div1">
+        <p>
+            p1
+            <span>span1</span>
+        </p>
+
+    </div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // 原生的Js中创建节点: document.write('<div></div>')  innerHTML, document.createElement()
+    $(function() {
+
+        // 1.  jquery创建节点 html(), $()
+
+        // html()设置和获取元素的内容
+        $('#btnHtml').click(function() {
+            // 获取内容
+            // console.log($('#div1').html()) // 包括元素的标签
+
+            // 设置, 会覆盖原来的内容, 如果有标签会解析出来
+            $('#div1').html('我是设置的内容<a href="www.baidu.com">baidu.com</a>').show()
+        })
+
+
+        // 能创建元素, 但是元素是在内存中的, 如果要显示的话, 要用append()
+        $('#btn1').click(function() {
+            var $links = $('<a href="news.baidu.com">News</a>')
+                // console.log($links);
+                // 追加节点
+            $('#div1').append($links)
+        })
+
+    })
+</script>
