@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 500px;
+            height: 200px;
+            list-style: none;
+            margin: 100px auto;
+            text-align: center;
+            border: 1px solid red;
+            padding-top: 15px;
+        }
+        
+        li {
+            float: left;
+            width: 80px;
+            height: 80px;
+            background-color: gray;
+            margin: 5px;
+            line-height: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul">
+        <li id="one">我是谁1</li>
+        <li>我是谁2</li>
+        <li>我是谁3</li>
+        <li>我是谁4</li>
+        <li>我是谁5</li>
+        <li>我是谁6</li>
+        <li>我是谁7</li>
+        <li>我是谁8</li>
+        <li>我是谁9</li>
+        <li>我是谁10</li>
+    </ul>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // 找到所有的Li标签, 分别设置透明度, 透明度是递增到1
+    $(function() {
+        // 获取的有的li标签
+        // console.log($('#one'));
+        var $lis = $('#ul').children()
+        console.log($lis);
+
+        // each(), 遍历jquery对象集合, 为每个匹配的元素执行一个函数
+        $lis.each(function(index, element) {
+            // console.log(index); // 索引号, 从0开始
+            // console.log(element); // dom元素  <li>我是谁</li>
+            $(element).css('opacity', (index + 1) / 10)
+        })
+    })
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="distpicker1">
+        <select></select>
+        <select></select>
+        <select></select>
+    </div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="plugins/distpicker.data.js"></script>
+<script src="plugins/distpicker.js"></script>
+<script>
+    $("#distpicker1").distpicker({
+        province: "湖北省",
+        city: "荆州市",
+        district: "洪湖市"
+    });
+</script>

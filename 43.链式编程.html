@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // 链式编程
+    // 1. 什么时候可以链式编程 ?
+    // 如果给定的元素调用一个方法, 这个方法有返回值, 并且返回的是一个jquery对象, 那就可以继续
+    // 再点击出jquery方法
+    $(function() {
+        // $('div').width(100).height(100).css('backgroundColor', 'red')
+        // 这样不行, 因为width()返回的是一个值, 而不是一个jquery对象
+        // $('div').width(100).width().height(100).css('backgroundColor', 'red')
+
+
+        //  有些时候我们一个方法返回的确实是一个jquery对象, 但是这个对象又不是我们想要的对象,
+        // 比如返回的jquery对象是一组li, 而不是一个li
+        // 这个时候就不要再继续下去了
+        // 这样不行, 因为width()返回的是一个值, 而不是一个jquery对象
+        // $('div').width(100).width().height(100).css('backgroundColor', 'red')
+
+        // end() 回到上一个状态
+        // 下面不行, 因为end()也是一个jquery方法, 而width()返回的是一个值, 这个值没有jquery对象
+        // 所以end(), 前面返回的值也要是一个jquery方法
+        // $('div').width(100).width().end().height(100).css('backgroundColor', 'red')
+
+    })
+</script>

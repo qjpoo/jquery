@@ -16,8 +16,10 @@
 </head>
 
 <body>
+    <input type="button" value="触发事件" id="btn0">
     <input type="button" value="注册事件" id="btn1">
     <input type="button" value="解绑事件" id="btn2">
+    <input type="button" value="自定义事件" id="btn3">
     <div class="one" id="one"></div>
 </body>
 
@@ -28,6 +30,12 @@
     // off()不给参数就是解绑所有的事件
     // off('click')解绑指定的事件
     $(function() {
+        // 给div注册一个单击事件
+        $('#one').on('click', function() {
+            console.log('one单击事件 ...');
+        })
+
+        // btn1注册事件
         $('#btn1').on('click', function() {
             // 给div注册事件
             $('#one').on({
@@ -45,5 +53,32 @@
             // $('#one').off() //解绑所有的事件
             $('#one').off('click') //解绑click事件
         });
+
+        // 给btn0注册事件
+        var i = 0;
+        $('#btn0').on('click', function() {
+            i++;
+            if (i == 3) {
+                // 条件满足, 触发div的单击事件
+                // 事件触发, 感觉就是用代码的方式来触发事件
+                // $('#one').click()
+                $('#one').trigger('click')
+            }
+        });
+
+        // 给div注册一个自定义的事件
+        $('#one').on('fuck', function() {
+            console.log('hello, world ...');
+        })
+
+        // 触发自定义的事件, 使用触发器trigger, 触发自定义的事件fuck
+        $('#btn3').on('click', function() {
+            var boolValue = confirm('are you promblem ?')
+            console.log(boolValue);
+            if (boolValue) {
+                $('#one').trigger('fuck')
+            }
+        })
+
     })
 </script>

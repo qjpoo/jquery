@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            width: 20000px;
+            height: 20000px;
+        }
+        
+        .one {
+            background-color: gray;
+            width: 200px;
+            height: 200px;
+            border: 1px solid green;
+            position: relative;
+            top: 400px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one" class="one">
+        <input type="button" value="ClickMe" id="btn">
+        <br><br>
+        <a href="https://www.baidu.com">百度一下, 你就知道</a>
+
+    </div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        // 1. 什么是事件cfqj
+        // 注册一个事伯, 系统就会帮我们生成一个对象记录这个事件触发时候一些信息
+        // 比如触发事件的时候有没有按住某个键, 触发这个事件的时候一些坐标信息
+        // jquery中用事件参数e来获取
+        // jquery的事件对象是对原生js事件对象的一个封装
+        $('#one').on('click', function(e) {
+            // console.log(e);
+            // console.log('screenX: ' + e.screenX + ' screenY: ' + e.screenY);
+            // console.log('clientX: ' + e.clientX + ' clientY: ' + e.clientY);
+            // console.log('pageX: ' + e.pageX + ' pageY: ' + e.pageY);
+            alert('111')
+        })
+
+        // 给btn单击事件
+        $('#btn').on('click', function(e) {
+            alert('btn click event')
+            e.stopPropagation() // 阻止事件冒泡, div不会弹出111了
+        })
+
+        // 阻止浏览器默认行为
+        $('a').on('click', function(e) {
+            alert('a link click event')
+                // 阻止事件冒泡
+                // e.stopPropagation()
+                // 阻止默认跳转
+                // e.preventDefault()
+            return false; // 即能阻止事件冒泡, 又能阻止默认事件
+        })
+
+        // 键盘按下事件
+        $(document).on('keydown', function(e) {
+            console.log(e.keyCode);
+        })
+
+    })
+</script>

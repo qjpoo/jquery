@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- <script src="js/jquery-3.0.0.min.js"></script> -->
+<script>
+    // 查看jquery版本
+    // jquery是属性
+    console.log(jQuery.fn.jquery);
+    console.log(jQuery.prototype.jquery);
+    console.log($.fn.jquery);
+    console.log($.prototype.jquery);
+
+    // 如果引入了多个jquery文件, 后面的js文件会覆盖前面的
+
+    // 如果引用 两个jquery文件, 多库共存
+    var _$ = $.noConflict() // 释放后面的jquery 3.0.0文件
+
+
+    console.log(_$.fn.jquery); // 3.0.0
+    console.log(jQuery.fn.jquery); // 3.0.0文件
+    console.log($.fn.jquery); // jquery 1.11文件
+
+    (function($) {
+        // 把_$传给$, 在里面就可以用$代替_$了
+
+    }(_$))
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jQuery-bgColor.js"></script>
+<script src="js/jquery-add.js"></script>
+<script>
+    // 不能设置背景颜色
+    // $('div').width(100).height(100).css('border', '1px solid green').css('backgroundColor', 'yellow')
+
+    // 自己封闭插件
+
+    //1. 给jQuery的原型添加方法
+    // $('div').width(100).height(100).css('border', '1px solid green').bgColor('yellow')
+    $('div').bgColor('green').height(100).width(100)
+
+
+    // 2. Query直接添加方法
+    console.log($.add(10, 20));
+</script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            font-family: verdana, arial, sans-serif;
+            font-size: 14px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+        
+        table thead th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+        
+        table td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="c"></div>
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-table.js"></script>
+<script>
+    $('#c').table(
+        ['序号', '姓名', '年龄', '工资'], [{ // 这是两个参数, 一个是head, 一个是body
+            n: 'xy0',
+            age: 20,
+            s: 10
+        }, {
+            n: 'xy1',
+            age: 21,
+            s: 11
+        }, {
+            n: 'xy2',
+            age: 22,
+            s: 12
+        }, {
+            n: 'xy3',
+            age: 23,
+            s: 13
+        }, ]
+    )
+</script>

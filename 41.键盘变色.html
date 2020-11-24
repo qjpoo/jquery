@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .wrap {
+            height: 400px;
+            width: 300px;
+            margin: 100px auto;
+            border: 1px solid pink;
+        }
+        
+        h1 {
+            border-bottom: 1px dotted black;
+            height: 100px;
+            text-align: left;
+            vertical-align: middle;
+            line-height: 100px;
+        }
+        
+        .bgChange {
+            height: 300px;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>按键变颜色</h1>
+        <div class="bgChange">
+            keyCode为:
+            <span id="keyCode"></span>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function() {
+        var $div = $('.bgChange')
+        var $code = $('#keyCode')
+        $(document).on('keydown', function(e) {
+            // console.log(e.keyCode);
+            // black 66
+            // yellow  89
+            // pink 80
+            // gray 71
+            // orange 79
+            switch (e.keyCode) {
+                case 66:
+                    $div.css('backgroundColor', 'black')
+                    $code.text('66')
+                    break;
+                case 89:
+                    $div.css('backgroundColor', 'yellow')
+                    $code.text('89')
+                    break;
+                case 80:
+                    $div.css('backgroundColor', 'pink')
+                    $code.text('80')
+                    break;
+                case 71:
+                    $div.css('backgroundColor', 'gray')
+                    $code.text('71')
+                    break;
+                default:
+                    $div.css('backgroundColor', 'blue')
+                    $code.text('查无此键')
+                    break;
+
+            }
+
+        })
+    })
+</script>

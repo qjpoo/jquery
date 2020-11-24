@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .comment {
+            width: 400px;
+            list-style: none;
+            margin: 100px auto;
+        }
+        
+        li {
+            float: left;
+            font-size: 50px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+
+</body>
+
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // 1. 鼠标移入到li标签上, 当前li标签和他之前的li标签显示实心五角心, 后面的Li显示出空心的五角心
+    // 2. 鼠标离开li, 所有的Li都奕成空心
+    // 3. 点击li, 鼠标离开后, 刚才点击的那个li和之前的li都变成实心五角心, 后面空心五角心.
+
+    $(function() {
+        var solid = '★'
+        var hollow = '☆'
+        $('.comment>li').on('mouseenter', function() {
+            // 当鼠标移入时候, 当前和前面的五角星都要变成实心的
+            // 当你放在第四个红星上的时候, 因为prevall()返回的是前三个, 他们每一个的后面都要变成hollow
+            // console.log($(this).text(solid).prevAll().text(solid).nextAll().text(hollow));
+            $(this).text(solid).prevAll().text(solid)
+            $(this).nextAll().text(hollow)
+        }).on('mouseleave', function() {
+            // 当鼠标离开的时候, 全部变成空心的
+            $('.comment>li').text(hollow)
+                // 找到有自定义的class, 把单击和之前的星星变实心的
+                // $('.comment>li[clickAttr="current"]').text(solid).prevAll().text(solid)
+            $('.comment>li[clickAttr]').text(solid).prevAll().text(solid)
+
+        }).on('click', function() {
+            // 给当击的星星添加一个自定的属性
+            $(this).attr('clickAttr', 'current').siblings().removeAttr('clickAttr')
+        })
+    })
+</script>
