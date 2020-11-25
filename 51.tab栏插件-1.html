@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .wrapper {
+            width: 1000px;
+            height: 475px;
+            margin: 100px auto;
+        }
+        
+        .tab-item span {
+            /*position: absolute;*/
+            width: 1px;
+            height: 14px;
+            overflow: hidden;
+            background: #ddd;
+        }
+        
+        .tab {
+            border: 1px solid #ddd;
+            width: 320px;
+            height: 36px;
+        }
+        /*把li标签作为父盒子,给li标签设置一个相对定位,给span标签作为子盒子设置绝对定位*/
+        
+        .tab li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            cursor: pointer;
+            border-top: 4px solid #fff;
+        }
+        
+        .tab li span {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 1px;
+            height: 14px;
+            overflow: hidden;
+            background-color: #ddd;
+        }
+        
+        .products {
+            border: 1px solid #ddd;
+            width: 1002px;
+            height: 476px;
+        }
+        
+        .products .main {
+            float: left;
+            display: none;
+        }
+        /*下面这两部是点击后的精髓*/
+        
+        .products .main.selected {
+            display: block;
+        }
+        
+        .tab li.active {
+            border-color: red;
+            border-bottom: 0;
+        }
+        
+        .products img {
+            width: 100%;
+        }
+        
+        */
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" id="wrapper">
+        <!--导航栏开始-->
+        <ul class="tab" id="tab-menu">
+            <li class="tab-item">国际大牌
+                <span></span>
+            </li>
+            <li class="tab-item">国状品牌
+                <span></span>
+            </li>
+            <li class="tab-item">清洁用品
+                <span></span>
+            </li>
+            <li class="tab-item">男士精品
+
+            </li>
+        </ul>
+        <!--导航栏结束-->
+        <!--主体开始-->
+        <div class="products" id="tab-main">
+            <!--一个#的a标签默认会跳转到当前页的首部,如果想阻止a标签跳转,又不希望跳转到首页,可以使用<a href="###"></a>-->
+            <div class="main selected">
+                <a href="###">
+                    <img src="imgs/03.jpg" alt="">
+                </a>
+            </div>
+            <div class="main">
+                <a href="###">
+                    <img src="imgs/02.jpg" alt="">
+                </a>
+            </div>
+            <div class="main">
+                <a href="###">
+                    <img src="imgs/03.jpg" alt="">
+                </a>
+            </div>
+            <div class="main">
+                <a href="###">
+                    <img src="imgs/02.jpg" alt="">
+                </a>
+            </div>
+        </div>
+        <!--主体结束-->
+
+    </div>
+</body>
+
+</html>
+<!--先引入文件和方法-->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!--//引入自己写的方法-->
+<script src="js/jQuery-tabs.js"></script>
+<script>
+    $(function() {
+        //先自己写一个jQuery-tabs方法(相当于js插件)
+        // 调用自己写的方法
+        $('#wrapper').tabs({
+            tabHeads: '#tab-menu>li',
+            tabHeadsClass: 'active',
+            tabBodys: '#tab-main>div',
+            tabBodysClass: 'selected'
+        })
+    })
+</script>

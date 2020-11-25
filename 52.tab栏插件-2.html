@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>www.jb51.net jQuery tab切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .tab {
+            width: 400px;
+            height: 50px;
+            background: #ccc;
+            margin: 100px auto;
+        }
+        
+        .tab-body {
+            width: 400px;
+            height: 398px;
+            border: 1px solid #ccc;
+        }
+        
+        .tab .item {
+            display: none;
+            padding-left: 30px;
+        }
+        
+        .tab-head li {
+            float: left;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        /*让下方的内容显示*/
+        
+        .item.selected {
+            display: block;
+        }
+        /*让上方li标签改变颜色*/
+        
+        .active {
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <ul class="tab-head">
+            <li class="active">页签1</li>
+            <li>页签2</li>
+            <li>页签3</li>
+            <li>页签4</li>
+        </ul>
+        <div class="tab-body">
+            <div class="item selected">
+                <p>内容1</p>
+                <p>内容1</p>
+                <p>内容1</p>
+                <p>内容1</p>
+            </div>
+            <div class="item">
+                <p>内容2</p>
+                <p>内容2</p>
+                <p>内容2</p>
+                <p>内容2</p>
+            </div>
+            <div class="item">
+                <p>内容3</p>
+                <p>内容3</p>
+                <p>内容3</p>
+                <p>内容3</p>
+            </div>
+            <div class="item">
+                <p>内容4</p>
+                <p>内容4</p>
+                <p>内容4</p>
+                <p>内容4</p>
+            </div>
+        </div>
+    </div>
+    <!--jq代码实现过程-->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!--//引入自己写的方法-->
+    <script src="js/jQuery-tabs.js"></script>
+    <script>
+        $(function() {
+            //先自己写一个jQuery-tabs方法(相当于js插件)
+            // 调用自己写的方法
+            $('.tab').tabs({
+                tabHeads: '.tab-head>li',
+                tabHeadsClass: 'active',
+                tabBodys: '.tab-body>div',
+                tabBodysClass: 'selected'
+            })
+        })
+    </script>
+</body>
+
+</html>
